@@ -32,12 +32,12 @@ class keypad():
  
         #remove interrupts temporarily
         for c in range(len(self.COLUMN)):
-            GPIO.remove_event_detect(self.COLUMN)
+            GPIO.remove_event_detect(self.COLUMN[c])
  
         #get column number
         colVal = -1
         for c in range(len(self.COLUMN)):
-            if channel == self.COLUMN:
+            if channel == self.COLUMN[c]:
                 colVal = c
  
         #continue if valid column (it should always be)
@@ -111,7 +111,7 @@ class keypad():
 import time     
 if __name__ == '__main__':
     def keypadCallback(value):
-        print "Keypad: " + value
+        print "Keypad: " + str(value)
 
     key = keypad(keypadCallback)
 
